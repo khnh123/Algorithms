@@ -14,3 +14,14 @@ def factorial(n):
         i += 1
         f = f * i
     return f
+
+from functools import reduce
+def fact(n):
+    return reduce(lambda a, b: a*b, range(1, n+1))
+#print(fact(20))
+
+from functools import reduce
+from operator import mul
+def fact1(n):
+    return reduce(mul, range(1, n+1))
+#print(fact1(20))
