@@ -7,3 +7,26 @@ def fib():
 
 for i, f in zip(range(10+1), fib()):
     print('{i:3}: {f:3}'.format(i=i, f=f))
+
+# clockdeco - https://github.com/fuyunliu/fluent-python/blob/master/07-closure-deco/clockdeco.py 
+# code from the book "fluent-python"
+
+# Без кэширования
+from clockdeco import clock
+@clock
+def fibonacci(n):
+	if n < 2:
+		return  n
+	return fibonacci(n-2) + fibonacci(n-1)
+print(fibonacci(6))
+
+# С кэшированием
+import functools
+from clockdeco import clock
+@functools.lru_cache() #
+@clock #
+def fibonacci(n):
+	if n < 2:
+		return  n
+	return fibonacci(n-2) + fibonacci(n-1)
+print(fibonacci(6))
