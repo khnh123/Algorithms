@@ -30,3 +30,12 @@ def fibonacci(n):
 		return  n
 	return fibonacci(n-2) + fibonacci(n-1)
 print(fibonacci(6))
+
+# yield
+def fib(num):
+    a,b = 0,1
+    for i in range(0, num):
+        yield f'{i+1}: {a}'
+        a, b = b, a+ b
+
+[print(i) for i in fib(10)]
